@@ -1,4 +1,4 @@
-package dbService.data;
+package me.zhukov.homelibrary.hibernate.data;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +13,7 @@ public class Book implements Serializable {
     private static final long serialVersionUID = -6537518032807298454L;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     private long id;
 
