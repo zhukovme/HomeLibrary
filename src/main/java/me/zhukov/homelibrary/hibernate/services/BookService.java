@@ -1,8 +1,9 @@
 package me.zhukov.homelibrary.hibernate.services;
 
-import me.zhukov.homelibrary.Callable;
 import me.zhukov.homelibrary.hibernate.dao.BookDao;
 import me.zhukov.homelibrary.hibernate.data.Book;
+import me.zhukov.homelibrary.hibernate.work.ReturningWork;
+import me.zhukov.homelibrary.hibernate.work.Work;
 import org.hibernate.Session;
 
 /**
@@ -13,43 +14,46 @@ public class BookService extends DBService {
     private final SessionService sessionService;
 
     public BookService() {
+        super();
         sessionService = new SessionService(sessionFactory);
     }
 
     public long addBook(final Book book) {
-        sessionService.doWorkInTransaction(new Callable() {
-            public void doWork(Session session) {
+        return sessionService.doWorkInTransaction(new ReturningWork<Long>() {
+
+            public Long doWork(Session session) {
                 BookDao dao = new BookDao(session);
-                long id = dao.insert(book);
+                return dao.insert(book);
             }
         });
-        return 0; // fixme сделать норм "callable"
     }
 
     public Book getBook(final long id) {
-        sessionService.doWorkInSession(new Callable() {
-            public void doWork(Session session) {
+        return sessionService.doWorkInSession(new ReturningWork<Book>() {
+
+            public Book doWork(Session session) {
                 BookDao dao = new BookDao(session);
-                Book book = dao.findById(id);
+                return dao.findById(id);
             }
         });
-        return null;  // fixme сделать норм "callable"
     }
 
     public void updateBook(final Book book) {
-        sessionService.doWorkInTransaction(new Callable() {
+        sessionService.doWorkInTransaction(new Work() {
+
             public void doWork(Session session) {
                 BookDao dao = new BookDao(session);
-                dao.update(book);  // fixme сделать норм "callable"
+                dao.update(book);
             }
         });
     }
 
     public void deleteBook(final Book book) {
-        sessionService.doWorkInTransaction(new Callable() {
+        sessionService.doWorkInTransaction(new Work() {
+
             public void doWork(Session session) {
                 BookDao dao = new BookDao(session);
-                dao.update(book);  // fixme сделать норм "callable"
+                dao.update(book);
             }
         });
     }

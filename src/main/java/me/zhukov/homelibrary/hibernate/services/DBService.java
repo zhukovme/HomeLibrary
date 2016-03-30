@@ -20,7 +20,9 @@ public abstract class DBService {
 
     protected Configuration getConfiguration() {
         Configuration configuration = new Configuration();
-        configuration.addAnnotatedClass(Book.class);
+        configuration
+                .addAnnotatedClass(Book.class)
+                .configure("hibernate.cfg.xml");
         return configuration;
     }
 

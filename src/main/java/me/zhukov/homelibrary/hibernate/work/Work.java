@@ -1,7 +1,11 @@
 package me.zhukov.homelibrary.hibernate.work;
 
+import org.hibernate.Session;
+
 /**
  * @author Michael Zhukov
  */
-public class Work {
+public interface Work {
+
+    void doWork(Session session);
 }
