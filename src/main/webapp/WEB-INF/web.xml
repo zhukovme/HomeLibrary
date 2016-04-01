@@ -12,9 +12,19 @@
         <servlet-class>me.zhukov.homelibrary.servlets.BooksServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>NewBookServlet</servlet-name>
+        <servlet-class>me.zhukov.homelibrary.servlets.NewBookServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>BooksServlet</servlet-name>
         <url-pattern>/json/books</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>NewBookServlet</servlet-name>
+        <url-pattern>/book</url-pattern>
     </servlet-mapping>
 
 </web-app>
