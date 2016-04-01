@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Book library</title>
+    <link rel="stylesheet" href="css/foundation.css">
+</head>
+<body>
+<h2>Book library</h2>
+<div class="column">
+    <a href="add-book.html" class="button">Add book</a>
+</div>
+<div class="large-7 columns">
+    <table class="hover">
+        <thead>
+        <tr>
+            <th width="60">Id</th>
+            <th>Title</th>
+        </tr>
+        </thead>
+        <tbody data-bind="foreach: books">
+        <tr>
+            <td data-bind="text: id"></td>
+            <td data-bind="text: title"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript" src="js/knockout-3.4.0.js"></script>
+<script type="text/javascript" src="js/viewmodels/books.js"></script>
+</body>
+</html>

@@ -17,8 +17,8 @@ public class Book implements Serializable {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "title")
+    private String title;
 
     @Column(name = "date")
     private Date date;
@@ -32,16 +32,16 @@ public class Book implements Serializable {
     public Book() {
     }
 
-    public Book(long id, String name, Date date, String author, long isbn) {
+    public Book(long id, String title, Date date, String author, long isbn) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.date = date;
         this.author = author;
         this.isbn = isbn;
     }
 
-    public Book(String name, Date date, String author, long isbn) {
-        this.name = name;
+    public Book(String title, Date date, String author, long isbn) {
+        this.title = title;
         this.date = date;
         this.author = author;
         this.isbn = isbn;
@@ -55,12 +55,12 @@ public class Book implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Date getDate() {
@@ -91,7 +91,7 @@ public class Book implements Serializable {
     public String toString() {
         return "Book{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
                 ", date=" + date +
                 ", author='" + author + '\'' +
                 ", isbn=" + isbn +

@@ -6,6 +6,8 @@ import me.zhukov.homelibrary.hibernate.work.ReturningWork;
 import me.zhukov.homelibrary.hibernate.work.Work;
 import org.hibernate.Session;
 
+import java.util.List;
+
 /**
  * @author Michael Zhukov
  */
@@ -38,6 +40,16 @@ public class BookService extends DBService {
         });
     }
 
+    public List<Book> getAllBooks() {
+        return sessionService.doWorkInSession(new ReturningWork<List<Book>>() {
+
+            public List<Book> doWork(Session session) {
+                BookDao dao = new BookDao(session);
+                return dao.findAll();
+            }
+        });
+    }
+
     public void updateBook(final Book book) {
         sessionService.doWorkInTransaction(new Work() {
 
@@ -54,6 +66,16 @@ public class BookService extends DBService {
             public void doWork(Session session) {
                 BookDao dao = new BookDao(session);
                 dao.update(book);
+            }
+        });
+    }
+
+    public void deleteAllBooks() {
+        sessionService.doWorkInTransaction(new Work() {
+
+            public void doWork(Session session) {
+                BookDao dao = new BookDao(session);
+                dao.deleteAll();
             }
         });
     }
