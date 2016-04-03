@@ -21,62 +21,44 @@ public class BookService extends DBService {
     }
 
     public long addBook(final Book book) {
-        return sessionService.doWorkInTransaction(new ReturningWork<Long>() {
-
-            public Long doWork(Session session) {
-                BookDao dao = new BookDao(session);
-                return dao.insert(book);
-            }
+        return sessionService.doWorkInTransaction(session -> {
+            BookDao dao = new BookDao(session);
+            return dao.insert(book);
         });
     }
 
     public Book getBook(final long id) {
-        return sessionService.doWorkInSession(new ReturningWork<Book>() {
-
-            public Book doWork(Session session) {
-                BookDao dao = new BookDao(session);
-                return dao.findById(id);
-            }
+        return sessionService.doWorkInSession(session -> {
+            BookDao dao = new BookDao(session);
+            return dao.findById(id);
         });
     }
 
     public List<Book> getAllBooks() {
-        return sessionService.doWorkInSession(new ReturningWork<List<Book>>() {
-
-            public List<Book> doWork(Session session) {
-                BookDao dao = new BookDao(session);
-                return dao.findAll();
-            }
+        return sessionService.doWorkInSession(session -> {
+            BookDao dao = new BookDao(session);
+            return dao.findAll();
         });
     }
 
     public void updateBook(final Book book) {
-        sessionService.doWorkInTransaction(new Work() {
-
-            public void doWork(Session session) {
-                BookDao dao = new BookDao(session);
-                dao.update(book);
-            }
+        sessionService.doWorkInTransaction(session -> {
+            BookDao dao = new BookDao(session);
+            dao.update(book);
         });
     }
 
     public void deleteBook(final Book book) {
-        sessionService.doWorkInTransaction(new Work() {
-
-            public void doWork(Session session) {
-                BookDao dao = new BookDao(session);
-                dao.update(book);
-            }
+        sessionService.doWorkInTransaction(session -> {
+            BookDao dao = new BookDao(session);
+            dao.update(book);
         });
     }
 
     public void deleteAllBooks() {
-        sessionService.doWorkInTransaction(new Work() {
-
-            public void doWork(Session session) {
-                BookDao dao = new BookDao(session);
-                dao.deleteAll();
-            }
+        sessionService.doWorkInTransaction(session -> {
+            BookDao dao = new BookDao(session);
+            dao.deleteAll();
         });
     }
 }

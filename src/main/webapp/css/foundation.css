@@ -1077,9 +1077,12 @@ table tfoot {
 table caption {
   font-weight: bold;
   padding: 0.5rem 0.625rem 0.625rem; }
+table thead th {
+  cursor:pointer;
+}
 table thead,
 table tfoot {
-  background: #f8f8f8;
+  background: #e6e6e6;
   color: #0a0a0a; }
 table thead tr,
 table tfoot tr {
@@ -1114,11 +1117,11 @@ table.scroll {
   width: 100%;
   overflow-x: auto; }
 
-table.hover tr:hover {
-  background-color: #f9f9f9; }
+table tbody tr:hover {
+  background-color: #99ccff; }
 
-table.hover tr:nth-of-type(even):hover {
-  background-color: #ececec; }
+table tbody tr:active {
+    background-color: #80bfff; }
 
 .table-scroll {
   overflow-x: auto; }

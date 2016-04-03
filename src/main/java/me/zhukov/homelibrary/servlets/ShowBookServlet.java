@@ -10,20 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 /**
  * @author Michael Zhukov
  */
-public class BooksServlet extends HttpServlet {
+public class ShowBookServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         BookService bookService = new BookService();
-        List<Book> allBooks = bookService.getAllBooks();
 
-        if (allBooks == null || allBooks.isEmpty()) {
+        String idStr = req.getPathInfo();
+
+        if (idStr == null || idStr.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
             return;
         }
@@ -31,11 +30,14 @@ public class BooksServlet extends HttpServlet {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
 
+        long id = Long.parseLong(idStr.replace("/", ""));
+        Book book = bookService.getBook(id);
+
         Gson gson = new Gson();
-        String json = gson.toJson(allBooks);
+        String bookJson = gson.toJson(book);
 
         PrintWriter out = resp.getWriter();
-        out.print(json);
+        out.print(bookJson);
         out.flush();
 
         resp.setStatus(HttpServletResponse.SC_OK);

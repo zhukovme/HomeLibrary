@@ -1,30 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
     <title>Book library</title>
     <link rel="stylesheet" href="css/foundation.css">
 </head>
 <body>
-<h2>Book library</h2>
+
 <div class="column">
-    <a href="add-book.html" class="button">Add book</a>
+    <h2>Book library</h2>
 </div>
-<div class="large-7 columns">
-    <table class="hover">
-        <thead>
-        <tr>
-            <th width="60">Id</th>
-            <th>Title</th>
-        </tr>
-        </thead>
-        <tbody data-bind="foreach: books">
-        <tr>
-            <td data-bind="text: id"></td>
-            <td data-bind="text: title"></td>
-        </tr>
-        </tbody>
-    </table>
+
+<div class="columns">
+    <div class="column">
+        <a href="add-book.html" class="button">Add book</a>
+        <a href="/delete-all-books" class="button">Delete all books</a>
+    </div>
+    <div class="column">
+        <table class="hover">
+            <thead>
+                <tr data-bind="foreach: headers">
+                    <th data-bind="click: $parent.sort, text: header" width="50%"></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: books">
+                <tr data-bind="click: $parent.showBook">
+                    <td style="display:none" data-bind="text: id"></td>
+                    <td data-bind="text: title"></td>
+                    <td data-bind="text: author"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <script type="text/javascript" src="js/knockout-3.4.0.js"></script>
 <script type="text/javascript" src="js/viewmodels/books.js"></script>

@@ -1,49 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Add book</title>
-  <link rel="stylesheet" href="css/foundation.css">
+    <meta charset="UTF-8"/>
+    <title>Add book</title>
+    <link rel="stylesheet" href="css/foundation.css">
 </head>
 <body>
-  <h2>Add book</h2>
+<div class="column">
+    <h2>Add book</h2>
+</div>
 
-  <form method="post" action="/book">
+<form method="POST" action="/add-book">
     <div class="column">
-      <div class="small-4 columns">
-        <label>Title
-          <input name="title" type="text" placeholder="Title" />
-        </label>
-      </div>
+        <div class="small-4 columns">
+            <label>Title
+                <input name="title" type="text" placeholder="Title" required/>
+            </label>
+        </div>
     </div>
     <div class="column">
-      <div class="small-4 columns">
-        <label>Author
-          <input name="author" type="text" placeholder="Author" />
-        </label>
-      </div>
+        <div class="small-4 columns">
+            <label>Author
+                <input name="author" type="text" placeholder="Author" required/>
+            </label>
+        </div>
     </div>
     <div class="column">
-      <div class="small-4 columns">
-        <label>Date
-          <input name="date" type="date" placeholder="Date" />
-        </label>
-      </div>
+        <div class="small-4 columns">
+            <label>Date
+                <input name="date" type="date" placeholder="Date" required/>
+            </label>
+        </div>
     </div>
     <div class="column">
-      <div class="small-4 columns">
-        <label>ISBN
-          <input name="isbn" type="number" placeholder="ISBN" />
-        </label>
-      </div>
-    </div>
-
-    <div class="column">
-      <div class="small-4 columns">
-        <input class="button" type="submit" value="Send"></input>
-      </div>
+        <div class="small-4 columns">
+            <label>ISBN
+                <input name="isbn" type="text" placeholder="ISBN" required pattern="[0-9]{10}([0-9]{3})?"/>
+            </label>
+        </div>
     </div>
 
-  </form>
+    <div class="columns">
+        <div class="column">
+            <a href="index.html" class="button">Back</a>
+            <input class="button" type="submit" value="Add book"/>
+        </div>
+    </div>
+
+</form>
 </body>
 </html>

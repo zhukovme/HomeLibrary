@@ -11,20 +11,36 @@
         <servlet-name>BooksServlet</servlet-name>
         <servlet-class>me.zhukov.homelibrary.servlets.BooksServlet</servlet-class>
     </servlet>
-
-    <servlet>
-        <servlet-name>NewBookServlet</servlet-name>
-        <servlet-class>me.zhukov.homelibrary.servlets.NewBookServlet</servlet-class>
-    </servlet>
-
     <servlet-mapping>
         <servlet-name>BooksServlet</servlet-name>
         <url-pattern>/json/books</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>NewBookServlet</servlet-name>
+        <servlet-class>me.zhukov.homelibrary.servlets.NewBookServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewBookServlet</servlet-name>
-        <url-pattern>/book</url-pattern>
+        <url-pattern>/add-book</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteAllBooksServlet</servlet-name>
+        <servlet-class>me.zhukov.homelibrary.servlets.DeleteAllBooksServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteAllBooksServlet</servlet-name>
+        <url-pattern>/delete-all-books</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ShowBookServlet</servlet-name>
+        <servlet-class>me.zhukov.homelibrary.servlets.ShowBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowBookServlet</servlet-name>
+        <url-pattern>/json/book/*</url-pattern>
     </servlet-mapping>
 
 </web-app>

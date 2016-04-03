@@ -29,9 +29,7 @@ public class BookDao implements Dao<Book> {
     }
 
     public void deleteAll() {
-        for (Book entity : findAll()) {
-            session.delete(entity);
-        }
+        session.createSQLQuery("truncate table book").executeUpdate();
     }
 
     public Book findById(long id) {

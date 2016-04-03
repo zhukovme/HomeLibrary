@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Book info</title>
+    <link rel="stylesheet" href="css/foundation.css">
+</head>
+<body>
+
+<div class="column">
+    <h2>Book info</h2>
+</div>
+
+<div class="columns">
+    <div class="column">
+        <span>Title: </span>
+        <span data-bind="text: title"></span>
+    </div>
+    <div class="column">
+        <span>Date: </span>
+        <span data-bind="text: date"></span>
+    </div>
+    <div class="column">
+        <span>Author: </span>
+        <span data-bind="text: author"></span>
+    </div>
+    <div class="column">
+        <span>ISBN: </span>
+        <span data-bind="text: isbn"></span>
+    </div>
+</div>
+<p>&nbsp;</p>
+
+<div class="column">
+    <a href="index.html" class="button">Back</a>
+</div>
+
+<script type="text/javascript" src="js/knockout-3.4.0.js"></script>
+<script type="text/javascript" src="js/viewmodels/book.js"></script>
+</body>
+</html>
